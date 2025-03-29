@@ -16,12 +16,15 @@ jobs:
         run: echo "Simulando deploy..."  # Corrigido erro de sintaxe
 
       - name: Upload Projeto Zipado
-        uses: actions/upload-artifact@v4
-        with:
-          name: projetozipado.zip
-          path:
-            - '**/*.py'   # Corrigido erro na estrutura YAML
-            - README.md
+                - uses: actions/upload-artifact@v4
+                with:
+                  name: projetozipado.zip
+                  path:
+                    - '**/*.py'   # ✅ Correto! Agora está como lista
+                    - README.md
+
+
+
 
 
 
