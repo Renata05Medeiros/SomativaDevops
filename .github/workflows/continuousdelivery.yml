@@ -1,4 +1,4 @@
-name: Continuos Ddelivery
+name: Continuos Delivery
 on:
   push:
     branches:
