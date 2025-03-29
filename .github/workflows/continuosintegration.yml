@@ -1,9 +1,8 @@
-name: Continuous Integration
-
+name: Continuos Integration
 on:
   pull_request:
     branches:
-      - main  # Corrigido espaço
+      -main
 
 jobs:
   build:
@@ -13,20 +12,15 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Configurar ambiente Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.10'
-
-      - name: Instalar dependências
-        run: |
-          python -m pip install --upgrade pip
-          pip install pylint
-
       - name: Python Lint Code Scanning Action
         uses: advanced-security/python-lint-code-scanning-action@v1.1.1
         with:
           linter: pylint
+                    - name: Upload Lint Report
+                    uses: actions/upload-artifact@v4
+                    with:
+                      name: lint-results
+                      path: pylint-report.json
 
 
 
