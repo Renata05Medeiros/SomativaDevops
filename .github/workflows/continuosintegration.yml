@@ -1,8 +1,9 @@
-name: Continuos Integration
+name: Continuous Integration
+
 on:
   pull_request:
     branches:
-      -main
+      - main  
 
 jobs:
   build:
