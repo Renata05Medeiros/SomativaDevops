@@ -22,7 +22,14 @@ jobs:
         uses: actions/upload-artifact@v4
         with:
           name: lint-results
-          path: pylint-report.json  # Corrigido a indentação aqui
+          path: pylint-report.json  # Certifique-se de que está na indentação correta
+
+
+
+
+
+
+
 
 
 
