@@ -3,12 +3,13 @@ name: Continuous Integration
 on:
   pull_request:
     branches:
-      - main  
+      - main  # Corrigido o espaço após o traço
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       - name: Check out repository code
         uses: actions/checkout@v4
 
@@ -16,6 +17,13 @@ jobs:
         uses: advanced-security/python-lint-code-scanning-action@v1.1.1
         with:
           linter: pylint
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-results
+          path: pylint-report.json  # Corrigido a indentação aqui
+
 
 
 
