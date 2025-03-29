@@ -1,8 +1,9 @@
-name: Continuos Delivery
+name: Continuous Delivery  # Corrigido nome do workflow
+
 on:
   push:
     branches:
-      -main # ou qualquer outra branch
+      - main  # Corrigido espaço antes do nome da branch
 
 jobs:
   deliver:
@@ -11,13 +12,16 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Simulando Continuos Deliery
-      - uses: actions/upload-artifact@v4
+      - name: Simulando Continuous Delivery
+        run: echo "Simulando deploy..."  # Corrigido erro de sintaxe
+
+      - name: Upload Projeto Zipado
+        uses: actions/upload-artifact@v4
         with:
           name: projetozipado.zip
           path:
-            '**.py'
-            README.md
+            - '**/*.py'   # Corrigido erro na estrutura YAML
+            - README.md
 
 
 
