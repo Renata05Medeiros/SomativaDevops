@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deliver:
+  delivery:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -15,15 +15,25 @@ jobs:
       - name: Simulando Continuous Delivery
         run: echo "Simulando deploy..."
 
-      - name: Listar arquivos no diretório
-        run: ls -l
+      - name: Compactar arquivos do projeto
+        run: zip -r projetozipado.zip . -x "*.git*"
 
       - name: Upload Projeto Zipado
         uses: actions/upload-artifact@v4
         with:
-          name: projetozipado.zip
-          path:
-          - '**/*.py'
-          - README.md
+          name: projetozipado
+          path: projetozipado.zip
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: deliver
+    steps:
+      - name: Baixar artefato do delivery
+        uses: actions/download-artifact@v4
+        with:
+          name: projetozipado
+
+      - name: Exibir estrutura dos arquivos baixados
+        run: ls -R
 
 
