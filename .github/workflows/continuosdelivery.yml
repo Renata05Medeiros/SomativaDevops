@@ -1,4 +1,4 @@
-name: Continuous Delivery
+name: Continuous Delivery  # Corrigido nome do workflow
 
 on:
   push:
@@ -12,23 +12,14 @@ jobs:
       - name: Check out repository code
         uses: actions/checkout@v4
 
-      - name: Instalar Pylint
-        run: pip install pylint
+      - name: Simulando Continuous Delivery
+        run: echo "Simulando deploy..."
 
-      - name: Rodar Pylint e gerar relatório JSON
-        run: pylint --output-format=json **/*.py > pylint-report.json
-
-      - name: Listar arquivos no diretório
-        run: ls -alh
-
-      - name: Upload Pylint Report
-        uses: actions/upload-artifact@v4
-        with:
-          name: lint-results
-          path: pylint-report.json
-          if-no-files-found: warn
-          compression-level: 6
-          overwrite: false
-          include-hidden-files: false
-
+      - name: Upload Projeto Zipado
+                - uses: actions/upload-artifact@v4
+                with:
+                  name: projetozipado.zip
+                  path:
+                    - '**/*.py'
+                    - README.md
 
