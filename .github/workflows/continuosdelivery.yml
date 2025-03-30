@@ -1,4 +1,4 @@
-name: Continuous Delivery  # Corrigido nome do workflow
+name: Continuous Delivery
 
 on:
   push:
