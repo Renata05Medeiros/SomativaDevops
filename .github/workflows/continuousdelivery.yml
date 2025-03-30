@@ -6,7 +6,7 @@ on:
       - main
 
 jobs:
-  deliver:
+  delivery:
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
