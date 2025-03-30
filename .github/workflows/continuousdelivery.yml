@@ -1,9 +1,9 @@
-name: Continuous Delivery  # Corrigido nome do workflow
+name: Continuous Delivery
 
 on:
   push:
     branches:
-      - main  # Corrigido espaço antes do nome da branch
+      - main
 
 jobs:
   deliver:
@@ -13,14 +13,14 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Simulando Continuous Delivery
-        run: echo "Simulando deploy..."  # Corrigido erro de sintaxe
+        run: echo "Simulando deploy..."
 
       - name: Upload Projeto Zipado
                 - uses: actions/upload-artifact@v4
                 with:
                   name: projetozipado.zip
                   path:
-                    - '**/*.py'   # ✅ Correto! Agora está como lista
+                -'**/*.py'
                     - README.md
 
 
@@ -28,10 +28,10 @@ deploy:
   runs-on: ubuntu-latest
   needs: deliver
   steps:
-    - users: actions/download-artifact@v4
+    - uses: actions/download-artifact@v4
       with:
-        nome: projetozipado.zip
-    - nome: Display stucture of download files
+        name: projetozipado.zip
+    - name: Exibir estrutura dos arquivos baixados
       run: ls -R
 
 
