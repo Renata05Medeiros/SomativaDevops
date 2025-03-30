@@ -1,4 +1,4 @@
-name: Continuous Delivery  # Corrigido nome do workflow
+name: Continuous Delivery
 
 on:
   push:
@@ -15,11 +15,15 @@ jobs:
       - name: Simulando Continuous Delivery
         run: echo "Simulando deploy..."
 
+      - name: Listar arquivos no diretório
+        run: ls -l
+
       - name: Upload Projeto Zipado
-                - uses: actions/upload-artifact@v4
-                with:
-                  name: projetozipado.zip
-                  path:
-                    - '**/*.py'
-                    - README.md
-                    -
+        uses: actions/upload-artifact@v4
+        with:
+          name: projetozipado.zip
+          path:
+          - '**/*.py'
+          - README.md
+
+

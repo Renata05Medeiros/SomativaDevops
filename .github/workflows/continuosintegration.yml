@@ -15,6 +15,16 @@ jobs:
       - name: Upload Lint Report
         uses: actions/upload-artifact@v4
         with:
+
+          linter: pylint
+
+      - name: Upload Lint Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: lint-results
+          path: pylint-report.json
+
+
           name: lint-results
           path: pylint-report.json
 
