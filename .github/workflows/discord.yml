@@ -7,14 +7,10 @@ jobs:
   discord:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
       - name: Enviar notificação para o Discord
-        uses: tsickert/discord-webhook@v5
-        with:
-          webhook-url: ${{ secrets.DISCORD_WEBHOOK }}
-          content: |
-              Novo commit enviado!
-              Autor: ${{ github.actor }}
-              Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+        uses: rtCamp/action-slack-notify@v2
+        env:
+          SLACK_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+          SLACK_MESSAGE: |
+                Novo commit enviado por ${{ github.actor }} no repositório ${{ github.repository }}.
+                 https://github.com/${{ github.repository }}/commit/${{ github.sha }}
