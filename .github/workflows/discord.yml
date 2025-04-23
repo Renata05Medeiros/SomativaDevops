@@ -7,11 +7,11 @@ jobs:
   discord:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Run Discord Webhook
-        uses: Ilshidur/action-discord@v2  # Alternativa estável
+      - name: Enviar mensagem para o Discord
+        uses: Ilshidur/action-discord@v2
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
-          message: "🚀 Novo commit foi feito no repositório!"
-
+          args: " Um novo commit foi enviado para o repositório!"
