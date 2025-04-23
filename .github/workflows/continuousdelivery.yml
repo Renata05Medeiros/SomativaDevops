@@ -44,7 +44,7 @@ jobs:
       - name: Send Discord Webhook
         uses: johnnyhuy/actions-discord-git-webhook@main
         with:
-          webhook_url: ${{ secrets.DIRCORD_WEBHOOK }}
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
 
 
 
