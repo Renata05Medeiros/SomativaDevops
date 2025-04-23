@@ -4,11 +4,12 @@ on:
   push:
 
 jobs:
-  discord:
+  notify:
     runs-on: ubuntu-latest
     steps:
-      - name: Enviar notificação para o Discord
-        uses: rtCamp/action-slack-notify@v2
-        env:
-          SLACK_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          SLACK_MESSAGE: " Novo commit feito por ${{ github.actor }}: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
+      - name: Enviar mensagem para o Discord
+        run: |
+          curl -H "Content-Type: application/json" \
+          -X POST \
+          -d "{\"content\": \" Novo commit feito por **${{ github.actor }}** no repositório: ${{ github.repository }}\n🔗 https://github.com/${{ github.repository }}/commit/${{ github.sha }}\"}" \
+          ${{ secrets.DISCORD_WEBHOOK }} || true
