@@ -11,6 +11,4 @@ jobs:
         uses: rtCamp/action-slack-notify@v2
         env:
           SLACK_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          SLACK_MESSAGE: |
-                Novo commit enviado por ${{ github.actor }} no repositório ${{ github.repository }}.
-                 https://github.com/${{ github.repository }}/commit/${{ github.sha }}
+          SLACK_MESSAGE: " Novo commit feito por ${{ github.actor }}: https://github.com/${{ github.repository }}/commit/${{ github.sha }}"
