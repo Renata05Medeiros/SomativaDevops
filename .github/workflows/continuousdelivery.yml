@@ -38,11 +38,11 @@ jobs:
 
       - name: Rodar Testes Unitários
         run: |
-          # Instalar dependências
+          # Instalar dependências (caso ainda não tenha feito)
           python -m pip install --upgrade pip
           pip install -r requirements.txt
           
-       
+          # Rodar os testes unitários
           pytest --maxfail=1 --disable-warnings -q
 
   notify:
@@ -54,7 +54,6 @@ jobs:
         uses: johnnyhuy/actions-discord-git-webhook@main
         with:
           webhook_url: ${{secrets.DISCORD_WEBHOOK }}
-
 
 
 
