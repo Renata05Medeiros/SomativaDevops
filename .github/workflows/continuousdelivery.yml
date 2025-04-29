@@ -36,6 +36,15 @@ jobs:
       - name: Exibir estrutura dos arquivos baixados
         run: ls -R
 
+      - name: Rodar Testes Unitários
+        run: |
+          # Instalar dependências (caso ainda não tenha feito)
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          
+          # Rodar os testes unitários
+          pytest --maxfail=1 --disable-warnings -q
+
   notify:
     name: Notify Discord
     runs-on: ubuntu-latest
@@ -44,7 +53,8 @@ jobs:
       - name: Send Discord Webhook
         uses: johnnyhuy/actions-discord-git-webhook@main
         with:
-          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          webhook_url: ${{secrets.DISCORD_WEBHOOK }}
+
 
 
 
